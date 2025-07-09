@@ -8,7 +8,7 @@ from src.config.configuration import AppConfiguration
 from src.exception.exception_handler import AppException
 
 #import mlflow
-import mlflow.sklearn
+#import mlflow.sklearn
 
 class ModelTrainer:
     def __init__(self, app_config = AppConfiguration()):
