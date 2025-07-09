@@ -41,7 +41,7 @@ class DataValidation:
                                 'Book-Rating':'rating'},inplace=True)
 
             # Lets store users who had at least rated more than 20 books
-            x = ratings['user_id'].value_counts() > 20
+            x = ratings['user_id'].value_counts() > 200
             y = x[x].index
             ratings = ratings[ratings['user_id'].isin(y)]
 
@@ -52,7 +52,7 @@ class DataValidation:
             final_rating = ratings_with_books.merge(number_rating, on='title')
 
             # Lets take those books which got at least 10 rating of user
-            final_rating = final_rating[final_rating['num_of_rating'] >= 10]
+            final_rating = final_rating[final_rating['num_of_rating'] >= 50]
 
             # lets drop the duplicates
             final_rating.drop_duplicates(['user_id','title'],inplace=True)
