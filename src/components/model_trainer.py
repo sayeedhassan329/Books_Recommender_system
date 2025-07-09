@@ -14,8 +14,8 @@ class ModelTrainer:
     def __init__(self, app_config = AppConfiguration()):
         try:
             self.model_trainer_config = app_config.get_model_trainer_config()
-            mlflow.set_tracking_uri("http://localhost:5000")  # Or remote URI
-            mlflow.set_experiment("Book_Recommender")
+            # mlflow.set_tracking_uri("http://localhost:5000")  # Or remote URI
+            # mlflow.set_experiment("Book_Recommender")
         except Exception as e:
             raise AppException(e, sys) from e
 
