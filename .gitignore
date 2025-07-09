@@ -4,3 +4,4 @@ artifacts/serialized_objects/book_pivot.pkl
 .ropeproject
 books_recommender_system.egg-info
 logs
+/artifacts
