@@ -23,26 +23,26 @@ class ModelTrainer:
     def train(self):
         try:
             #loading pivot data
-            with mlflow.start_run():
-                book_pivot = pickle.load(open(self.model_trainer_config.transformed_data_file_dir,'rb'))
-                book_sparse = csr_matrix(book_pivot)
-                #Training model
-                model = NearestNeighbors(algorithm= 'brute')
-                model.fit(book_sparse)
+            # with mlflow.start_run():
+            book_pivot = pickle.load(open(self.model_trainer_config.transformed_data_file_dir,'rb'))
+            book_sparse = csr_matrix(book_pivot)
+            #Training model
+            model = NearestNeighbors(algorithm= 'brute')
+            model.fit(book_sparse)
 
-                mlflow.log_params({
-                                    "algorithm": "brute"
-                })
-                mlflow.sklearn.log_model(model, "recommender_model")
+            # mlflow.log_params({
+            #                     "algorithm": "brute"
+            # })
+            # mlflow.sklearn.log_model(model, "recommender_model")
 
-                mlflow.set_tag("model_type", "collaborative_filtering")
+            # mlflow.set_tag("model_type", "collaborative_filtering")
 
-                print(f"Logged to MLflow run: {mlflow.active_run().info.run_id}")
-                #Saving model object for recommendations
-                os.makedirs(self.model_trainer_config.trained_model_dir, exist_ok=True)
-                file_name = os.path.join(self.model_trainer_config.trained_model_dir,self.model_trainer_config.trained_model_name)
-                pickle.dump(model,open(file_name,'wb'))
-                logging.info(f"Saving final model to {file_name}")
+            # print(f"Logged to MLflow run: {mlflow.active_run().info.run_id}")
+            #Saving model object for recommendations
+            os.makedirs(self.model_trainer_config.trained_model_dir, exist_ok=True)
+            file_name = os.path.join(self.model_trainer_config.trained_model_dir,self.model_trainer_config.trained_model_name)
+            pickle.dump(model,open(file_name,'wb'))
+            logging.info(f"Saving final model to {file_name}")
 
         except Exception as e:
             raise AppException(e, sys) from e
