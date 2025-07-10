@@ -1,6 +1,5 @@
 
-artifacts/dataset
-artifacts/serialized_objects/book_pivot.pkl
+artifacts
 .ropeproject
 books_recommender_system.egg-info
 logs
