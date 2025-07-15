@@ -1,5 +1,7 @@
 # End-to-End-Book-Recommender-System
 
+#### The deployment of this project using Streamlit which you can find [here](https://booksrecommendersystem-329.streamlit.app/)
+
 ## Workflow
 
 - config.yaml
